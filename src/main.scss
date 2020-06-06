@@ -1,0 +1,30 @@
+$max-width: 480px;
+$spacer: 1rem;
+
+$desktop: $max-width;
+$fullhd: $max-width;
+$widescreen: $max-width;
+$tablet: $max-width;
+$container-offset: 0;
+
+#app {
+  min-height: 100vh;
+}
+
+.navbar {
+  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (min-width: 480px) {
+  nav.navbar > .container {
+    .navbar-brand {
+      margin-left: 0;
+    }
+
+    .navbar-menu {
+      margin-right: 0;
+    }
+  }
+}
+
+@import "bulma/bulma.sass";
