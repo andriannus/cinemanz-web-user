@@ -1,3 +1,5 @@
+const { EOL } = require('os');
+
 module.exports = {
   root: true,
   env: {
@@ -11,7 +13,7 @@ module.exports = {
     parser: 'babel-eslint',
   },
   rules: {
-    'linebreak-style': ['error', process.env.NODE_ENV === 'prod' ? "unix" : "windows"],
+    'linebreak-style': ['error', EOL === '\r\n' ? 'windows' : 'unix'],
     'no-console': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
     'no-debugger': process.env.NODE_ENV === 'production' ? 'warn' : 'off',
   },
