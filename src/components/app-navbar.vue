@@ -21,11 +21,20 @@
       <div :class="{ 'is-active': isActive }" class="navbar-menu">
         <div class="navbar-end">
           <router-link
-            v-for="menu in menus"
-            :key="menu.name"
+            v-for="(menu, mobileKey) in menus"
+            :key="'m-' + mobileKey"
             :to="menu.to"
             active-class="is-active"
-            class="navbar-item"
+            class="navbar-item is-hidden-mobile"
+          >{{ menu.name }}</router-link>
+
+          <router-link
+            v-for="(menu, desktopKey) in menus"
+            :key="'d-' + desktopKey"
+            :to="menu.to"
+            active-class="is-active"
+            class="navbar-item is-hidden-tablet"
+            @click.native="toggleNavbarMenu()"
           >{{ menu.name }}</router-link>
         </div>
       </div>
