@@ -1,6 +1,12 @@
 <template>
   <div>
-    <h1>This is an upcoming movie page</h1>
+    <paginated-movies></paginated-movies>
+
+    <nav class="level">
+      <div class="level-item">
+        <button class="button is-dark is-outlined">Load More</button>
+      </div>
+    </nav>
   </div>
 </template>
 

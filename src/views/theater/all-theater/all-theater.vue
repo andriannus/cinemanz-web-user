@@ -1,6 +1,12 @@
 <template>
   <div>
-    <h1>This is an all theater page</h1>
+    <paginated-theaters></paginated-theaters>
+
+    <nav class="level">
+      <div class="level-item">
+        <button class="button is-dark is-outlined">Load More</button>
+      </div>
+    </nav>
   </div>
 </template>
 
