@@ -4,7 +4,7 @@
       <div class="container">
         <h1 class="title">{{ title }}</h1>
 
-        <h2 class="subtitle">{{ subtitle }}</h2>
+        <h2 v-if="subtitle" class="subtitle">{{ subtitle }}</h2>
       </div>
     </div>
   </section>
