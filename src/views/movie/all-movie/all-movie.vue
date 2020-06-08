@@ -6,7 +6,7 @@
       </div>
     </nav>
 
-    <paginated-movies></paginated-movies>
+    <paginated-movies :movies="movies"></paginated-movies>
 
     <nav class="level">
       <div class="level-item">
