@@ -6,7 +6,7 @@
       </div>
     </nav>
 
-    <paginated-movies :movies="movies"></paginated-movies>
+    <paginated-movies :movies="nowPlaying.movies"></paginated-movies>
 
     <nav class="level">
       <div class="level-item">
@@ -25,7 +25,7 @@
       </div>
     </nav>
 
-    <paginated-movies></paginated-movies>
+    <paginated-movies :movies="upcoming.movies"></paginated-movies>
 
     <nav class="level">
       <div class="level-item">
