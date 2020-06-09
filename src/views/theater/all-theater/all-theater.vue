@@ -1,6 +1,6 @@
 <template>
   <div>
-    <paginated-theaters></paginated-theaters>
+    <paginated-theaters :theaters="theaters"></paginated-theaters>
 
     <nav class="level">
       <div class="level-item">
