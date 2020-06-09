@@ -1,13 +1,19 @@
 <template>
-  <div class="columns is-multiline is-mobile">
-    <div
-      v-for="(movie, index) in movies"
-      :key="'m-' + index"
-      class="column is-one-third is-one-third-mobile has-text-centered"
-    >
-      <img src="https://via.placeholder.com/280x420?text=No+Picture" :alt="movie.title" />
+  <div>
+    <div v-if="movies.length" class="columns is-multiline is-mobile">
+      <div
+        v-for="(movie, index) in movies"
+        :key="'m-' + index"
+        class="column is-one-third is-one-third-mobile has-text-centered"
+      >
+        <img src="https://via.placeholder.com/280x420?text=No+Picture" :alt="movie.title" />
 
-      <h6 class="is-size-6">{{ movie.title }}</h6>
+        <h6 class="is-size-6">{{ movie.title }}</h6>
+      </div>
+    </div>
+
+    <div v-else class="has-text-centered">
+      <h4 class="is-size-4">Data Not Found</h4>
     </div>
   </div>
 </template>
