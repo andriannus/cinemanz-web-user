@@ -2,6 +2,7 @@ import PaginatedMovies from '@/components/paginated-movies.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import SHOWING_MOVIE from '@/shared/constants/movie.constant';
 import MOVIES from '@/graphql/query/Movies.gql';
+import paginate from '@/shared/utils/transform.util';
 
 export default {
   metaInfo: {
@@ -17,12 +18,12 @@ export default {
       nowPlaying: {
         errorMessage: '',
         isLoading: false,
-        movies: [],
+        movie: {},
       },
       upcoming: {
         errorMessage: '',
         isLoading: false,
-        movies: [],
+        movie: {},
       },
     };
   },
@@ -40,11 +41,19 @@ export default {
       this.nowPlaying.isLoading = true;
 
       try {
-        const { data } = await this.fetchMovies(page, SHOWING_MOVIE.nowPlaying);
+        const movie = await this.fetchMovies(page, SHOWING_MOVIE.nowPlaying);
 
-        this.nowPlaying.movies = data.movies.results;
+        this.nowPlaying = {
+          ...this.nowPlaying,
+          errorMessage: '',
+          movie,
+        };
       } catch (error) {
-        console.log(error);
+        this.nowPlaying = {
+          ...this.nowPlaying,
+          errorMessage: error,
+          movie: {},
+        };
       } finally {
         this.nowPlaying.isLoading = false;
       }
@@ -54,11 +63,19 @@ export default {
       this.upcoming.isLoading = true;
 
       try {
-        const { data } = await this.fetchMovies(page, SHOWING_MOVIE.upcoming);
+        const movie = await this.fetchMovies(page, SHOWING_MOVIE.upcoming);
 
-        this.upcoming.movies = data.movies.results;
+        this.upcoming = {
+          ...this.upcoming,
+          errorMessage: '',
+          movie,
+        };
       } catch (error) {
-        console.log(error);
+        this.upcoming = {
+          ...this.upcoming,
+          errorMessage: error,
+          movie: {},
+        };
       } finally {
         this.upcoming.isLoading = false;
       }
@@ -68,13 +85,25 @@ export default {
       const validPage = page || 1;
       const skip = (validPage - 1) * PER_PAGE;
 
-      return this.$apollo.query({
-        query: MOVIES,
-        variables: {
-          skip,
-          limit: PER_PAGE,
-          showing,
-        },
+      return new Promise((resolve, reject) => {
+        this.$apollo
+          .query({
+            query: MOVIES,
+            variables: {
+              skip,
+              limit: PER_PAGE,
+              showing,
+            },
+          })
+          .then(({ data }) => {
+            const { results, total } = data.movies;
+
+            const options = { page: validPage, limit: PER_PAGE, total };
+            const result = paginate(results, options);
+
+            resolve(result);
+          })
+          .catch(({ networkError }) => reject(networkError));
       });
     },
   },

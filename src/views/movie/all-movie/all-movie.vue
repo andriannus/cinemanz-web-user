@@ -6,9 +6,9 @@
       </div>
     </nav>
 
-    <paginated-movies :movies="nowPlaying.movies"></paginated-movies>
+    <paginated-movies :movies="nowPlaying.movie.data"></paginated-movies>
 
-    <nav class="level">
+    <nav v-if="nowPlaying.movie.nextPage" class="level">
       <div class="level-item">
         <router-link
           class="button is-dark is-outlined"
@@ -25,9 +25,9 @@
       </div>
     </nav>
 
-    <paginated-movies :movies="upcoming.movies"></paginated-movies>
+    <paginated-movies :movies="upcoming.movie.data"></paginated-movies>
 
-    <nav class="level">
+    <nav v-if="upcoming.movie.nextPage" class="level">
       <div class="level-item">
         <router-link
           class="button is-dark is-outlined"
