@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-5">
     <div v-if="movies.length" class="columns is-multiline is-mobile">
       <div
         v-for="(movie, index) in movies"

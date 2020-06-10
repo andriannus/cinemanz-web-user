@@ -11,11 +11,9 @@
 
       <paginated-movies :movies="movie.results"></paginated-movies>
 
-      <nav class="level">
-        <div class="level-item">
-          <router-link class="button is-dark is-outlined" to="/movie">See More</router-link>
-        </div>
-      </nav>
+      <div class="has-text-centered">
+        <router-link class="button is-dark is-outlined" to="/theater">See More</router-link>
+      </div>
 
       <hr />
 
@@ -27,11 +25,9 @@
 
       <paginated-theaters></paginated-theaters>
 
-      <nav class="level">
-        <div class="level-item">
-          <router-link class="button is-dark is-outlined" to="/theater">See More</router-link>
-        </div>
-      </nav>
+      <div class="has-text-centered">
+        <router-link class="button is-dark is-outlined" to="/theater">See More</router-link>
+      </div>
     </div>
   </div>
 </template>

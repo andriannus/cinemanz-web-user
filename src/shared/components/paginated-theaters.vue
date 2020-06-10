@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="mb-5">
     <div v-if="theaters.length" class="columns is-multiline is-mobile">
       <div v-for="(theater, index) in theaters" :key="'t-' + index" class="column is-12">
         <article class="media">
