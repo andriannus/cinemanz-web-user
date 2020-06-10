@@ -1,4 +1,4 @@
-import PaginatedMovies from '@/components/paginated-movies.vue';
+import PaginatedMovies from '@/shared/components/paginated-movies.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import SHOWING_MOVIE from '@/shared/constants/movie.constant';
 import MOVIES from '@/shared/graphql/Movies.gql';

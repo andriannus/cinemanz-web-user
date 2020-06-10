@@ -1,6 +1,6 @@
-import AppBanner from '@/components/app-banner.vue';
-import PaginatedMovies from '@/components/paginated-movies.vue';
-import PaginatedTheaters from '@/components/paginated-theaters.vue';
+import AppBanner from '@/shared/components/app-banner.vue';
+import PaginatedMovies from '@/shared/components/paginated-movies.vue';
+import PaginatedTheaters from '@/shared/components/paginated-theaters.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import MOVIES from '@/shared/graphql/Movies.gql';
 

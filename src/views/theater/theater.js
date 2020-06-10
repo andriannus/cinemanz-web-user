@@ -1,4 +1,4 @@
-import AppBanner from '@/components/app-banner.vue';
+import AppBanner from '@/shared/components/app-banner.vue';
 
 export default {
   data() {
