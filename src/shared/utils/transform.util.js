@@ -1,4 +1,4 @@
-function paginate(data, options) {
+const paginate = (data, options) => {
   const { page, limit, total } = options;
   const totalPage = Math.ceil(total / limit);
 
@@ -11,6 +11,6 @@ function paginate(data, options) {
     total,
     totalPage,
   };
-}
+};
 
 export { paginate as default };
