@@ -1,9 +1,9 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
 
-import homeRoutes from './home.routes';
-import movieRoutes from './movie.routes';
-import theaterRoutes from './theater.routes';
+import homeRoutes from '@/router/home.routes';
+import movieRoutes from '@/router/movie.routes';
+import theaterRoutes from '@/router/theater.routes';
 
 Vue.use(VueRouter);
 
