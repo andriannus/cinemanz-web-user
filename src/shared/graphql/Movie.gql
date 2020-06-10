@@ -1,0 +1,24 @@
+query Movie($id: ID!) {
+  movie(id: $id) {
+    status
+    message
+    result {
+      _id
+      cast
+      director
+      end
+      genre
+      minutes
+      poster
+      producer
+      production
+      rate
+      start
+      synopsis
+      title
+      writer
+    }
+    access_time_in
+    access_time_out
+  }
+}
