@@ -23,7 +23,7 @@
         </div>
       </nav>
 
-      <paginated-theaters :theaters="theater.result.data"></paginated-theaters>
+      <paginated-theaters :theaters="theater.results"></paginated-theaters>
 
       <div class="has-text-centered">
         <router-link class="button is-dark is-outlined" to="/theater">See More</router-link>

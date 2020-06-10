@@ -4,7 +4,6 @@ import PaginatedTheaters from '@/shared/components/paginated-theaters.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import MOVIES from '@/shared/graphql/Movies.gql';
 import THEATERS from '@/shared/graphql/Theaters.gql';
-import paginate from '@/shared/utils/transform.util';
 
 export default {
   components: {
@@ -23,43 +22,47 @@ export default {
       theater: {
         errorMessage: '',
         isLoading: false,
-        result: {},
+        results: [],
       },
     };
   },
 
   mounted() {
-    this.fetchAllMovie();
+    this.fetchMovies();
     this.fetchTheaters();
   },
 
   methods: {
-    async fetchAllMovie(page) {
-      this.movie.isLoading = true;
-
-      try {
-        const { data } = await this.fetchMovies(page);
-
-        this.movie.results = data.movies.results;
-      } catch (error) {
-        console.log(error);
-      } finally {
-        this.movie.isLoading = false;
-      }
-    },
-
-    fetchMovies(page, showing) {
+    async fetchMovies(page, showing) {
       const validPage = page || 1;
       const skip = (validPage - 1) * PER_PAGE;
 
-      return this.$apollo.query({
-        query: MOVIES,
-        variables: {
-          skip,
-          limit: PER_PAGE,
-          showing,
-        },
-      });
+      this.movie.isLoading = true;
+
+      try {
+        const { data } = await this.$apollo.query({
+          query: MOVIES,
+          variables: {
+            skip,
+            limit: PER_PAGE,
+            showing,
+          },
+        });
+
+        this.movie = {
+          ...this.movie,
+          errorMessage: '',
+          results: data.movies.results,
+        };
+      } catch ({ networkError }) {
+        this.movie = {
+          ...this.movie,
+          errorMessage: networkError,
+          results: [],
+        };
+      } finally {
+        this.movie.isLoading = false;
+      }
     },
 
     async fetchTheaters(page) {
@@ -77,21 +80,16 @@ export default {
           },
         });
 
-        const { results, total } = data.theaters;
-
-        const options = { page: validPage, limit: PER_PAGE, total };
-        const result = paginate(results, options);
-
         this.theater = {
           ...this.theater,
           errorMessage: '',
-          result,
+          results: data.theaters.results,
         };
       } catch ({ networkError }) {
         this.theater = {
           ...this.theater,
           errorMessage: networkError,
-          result: {},
+          results: [],
         };
       } finally {
         this.theater.isLoading = false;
