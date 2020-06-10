@@ -5,13 +5,17 @@
         <article class="media">
           <figure class="media-left">
             <p class="image is-64x64">
-              <img src="https://via.placeholder.com/64x64?text=T" alt="Theater" />
+              <img :src="getImageUrlWithTheaterName(theater.name)" :alt="theater.name" />
             </p>
           </figure>
 
           <div class="media-content">
             <div class="content">
-              <p>Nama Theater</p>
+              <p>
+                {{ theater.name }}
+                <br />
+                <small>{{ theater.address }}</small>
+              </p>
             </div>
           </div>
         </article>
@@ -32,6 +36,15 @@ export default {
       default() {
         return [];
       },
+    },
+  },
+
+  methods: {
+    getImageUrlWithTheaterName(theater) {
+      const IMAGE_URL = 'https://via.placeholder.com/64x64';
+      const text = `?text=${theater.charAt(0)}`;
+
+      return `${IMAGE_URL}${text}`;
     },
   },
 };
