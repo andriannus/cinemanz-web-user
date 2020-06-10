@@ -1,6 +1,7 @@
 import PaginatedTheaters from '@/components/paginated-theaters.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import THEATERS from '@/graphql/query/Theaters.gql';
+import paginate from '@/shared/utils/transform.util';
 
 export default {
   metaInfo: {
@@ -15,7 +16,7 @@ export default {
     return {
       errorMessage: '',
       isLoading: false,
-      theaters: [],
+      theater: {},
     };
   },
 
@@ -43,9 +44,16 @@ export default {
           },
         });
 
-        this.theaters = data.theaters.results;
-      } catch (error) {
-        console.log(error);
+        const { results, total } = data.theaters;
+
+        const options = { page: validPage, limit: PER_PAGE, total };
+        const theater = paginate(results, options);
+
+        this.errorMessage = '';
+        this.theater = theater;
+      } catch ({ networkError }) {
+        this.errorMessage = networkError;
+        this.theater = {};
       } finally {
         this.isLoading = false;
       }

@@ -1,8 +1,8 @@
 <template>
   <div>
-    <paginated-theaters :theaters="theaters"></paginated-theaters>
+    <paginated-theaters :theaters="theater.data"></paginated-theaters>
 
-    <nav class="level">
+    <nav v-if="theater.nextPage" class="level">
       <div class="level-item">
         <button class="button is-dark is-outlined">Load More</button>
       </div>
