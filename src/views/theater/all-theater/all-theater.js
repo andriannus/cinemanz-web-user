@@ -1,6 +1,6 @@
 import PaginatedTheaters from '@/components/paginated-theaters.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
-import THEATERS from '@/graphql/query/Theaters.gql';
+import THEATERS from '@/shared/graphql/Theaters.gql';
 import paginate from '@/shared/utils/transform.util';
 
 export default {

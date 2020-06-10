@@ -2,7 +2,7 @@ import AppBanner from '@/components/app-banner.vue';
 import PaginatedMovies from '@/components/paginated-movies.vue';
 import PaginatedTheaters from '@/components/paginated-theaters.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
-import MOVIES from '@/graphql/query/Movies.gql';
+import MOVIES from '@/shared/graphql/Movies.gql';
 
 export default {
   components: {

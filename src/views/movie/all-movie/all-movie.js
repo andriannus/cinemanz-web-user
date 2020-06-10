@@ -1,7 +1,7 @@
 import PaginatedMovies from '@/components/paginated-movies.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import SHOWING_MOVIE from '@/shared/constants/movie.constant';
-import MOVIES from '@/graphql/query/Movies.gql';
+import MOVIES from '@/shared/graphql/Movies.gql';
 import paginate from '@/shared/utils/transform.util';
 
 export default {
