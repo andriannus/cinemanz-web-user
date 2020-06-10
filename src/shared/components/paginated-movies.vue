@@ -8,7 +8,9 @@
       >
         <img src="https://via.placeholder.com/280x420?text=No+Picture" :alt="movie.title" />
 
-        <h6 class="is-size-6">{{ movie.title }}</h6>
+        <router-link :to="'/movie/' + movie._id" class="is-size-6">
+          {{ movie.title }}
+        </router-link>
       </div>
     </div>
 

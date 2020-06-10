@@ -1,9 +1,51 @@
+import MOVIE from '@/shared/graphql/Movie.gql';
+
 export default {
-  metaInfo: {
-    title: 'Selected Movie',
+  metaInfo() {
+    return {
+      title: this.movie.title,
+    };
+  },
+
+  data() {
+    return {
+      errorMessage: '',
+      isLoading: false,
+      movie: {},
+    };
   },
 
   mounted() {
-    this.$emit('titleSpecified', 'Selected Movie');
+    const { id } = this.$route.params;
+
+    this.fetchMovie(id);
+  },
+
+  methods: {
+    async fetchMovie(id) {
+      this.$emit('titleSpecified', 'Loading...');
+      this.isLoading = true;
+
+      try {
+        const { data } = await this.$apollo.query({
+          query: MOVIE,
+          variables: {
+            id,
+          },
+        });
+
+        this.errorMessage = '';
+        this.movie = data.movie.result;
+
+        this.$emit('titleSpecified', this.movie.title);
+      } catch ({ networkError }) {
+        this.errorMessage = networkError;
+        this.movie = {};
+
+        this.$emit('titleSpecified', '-');
+      } finally {
+        this.isLoading = false;
+      }
+    },
   },
 };
