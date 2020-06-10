@@ -12,7 +12,7 @@
           <div class="media-content">
             <div class="content">
               <p>
-                {{ theater.name }}
+                <router-link :to="'/theater/' + theater._id">{{ theater.name }}</router-link>
                 <br />
                 <small>{{ theater.address }}</small>
               </p>

@@ -1,6 +1,12 @@
 <template>
   <div>
-    <h1>This is a theater detail page</h1>
+    <p class="has-text-weight-bold">Address</p>
+    <span>{{ theater.address || '-' }}</span>
+
+    <hr />
+
+    <p class="has-text-weight-bold">Telephone</p>
+    <span>{{ theater.telephone || '-' }}</span>
   </div>
 </template>
 
