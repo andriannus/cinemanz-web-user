@@ -8,7 +8,7 @@
       >
         <movie-poster :src="movie.poster" :alt="movie.title"></movie-poster>
 
-        <router-link :to="'/movie/' + movie._id" class="is-size-6">
+        <router-link :to="'/movie/' + movie._id" class="is-size-6 is-ellipsis">
           {{ movie.title }}
         </router-link>
       </div>

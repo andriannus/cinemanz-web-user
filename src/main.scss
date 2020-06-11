@@ -15,6 +15,14 @@ $container-offset: 0;
   box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2);
 }
 
+.is-ellipsis {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
 @media screen and (min-width: 480px) {
   nav.navbar > .container {
     .navbar-brand {
