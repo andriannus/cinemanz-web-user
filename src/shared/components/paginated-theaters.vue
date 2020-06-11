@@ -13,10 +13,10 @@
             <div class="content">
               <p>
                 <router-link :to="'/theater/' + theater._id" class="is-ellipsis">
-                  {{ theater.name }}
+                  {{ theater.name || '-' }}
                 </router-link>
                 <br />
-                <small>{{ theater.address }}</small>
+                <small>{{ theater.address || '-' }}</small>
               </p>
             </div>
           </div>
@@ -45,7 +45,7 @@ export default {
 
   methods: {
     getImageUrlWithTheaterName(theater) {
-      const text = `?text=${theater.charAt(0)}`;
+      const text = `?text=${theater ? theater.charAt(0) : '-'}`;
 
       return `${DEFAULT_IMAGE_URL.theater}${text}`;
     },
