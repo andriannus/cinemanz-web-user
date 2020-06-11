@@ -29,6 +29,8 @@
 </template>
 
 <script>
+import { DEFAULT_IMAGE_URL } from '@/shared/constants/data.constant';
+
 export default {
   props: {
     theaters: {
@@ -41,10 +43,9 @@ export default {
 
   methods: {
     getImageUrlWithTheaterName(theater) {
-      const IMAGE_URL = 'https://via.placeholder.com/64x64';
       const text = `?text=${theater.charAt(0)}`;
 
-      return `${IMAGE_URL}${text}`;
+      return `${DEFAULT_IMAGE_URL.theater}${text}`;
     },
   },
 };
