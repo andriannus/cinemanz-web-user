@@ -1,4 +1,6 @@
+import FlatList from '@/shared/components/flat-list.vue';
 import MOVIE from '@/shared/graphql/Movie.gql';
+import { DEFAULT_IMAGE_URL } from '@/shared/constants/data.constant';
 
 export default {
   metaInfo() {
@@ -7,8 +9,13 @@ export default {
     };
   },
 
+  components: {
+    'flat-list': FlatList,
+  },
+
   data() {
     return {
+      defaultMovieImageUrl: DEFAULT_IMAGE_URL.movie,
       errorMessage: '',
       isLoading: false,
       movie: {},
@@ -46,6 +53,16 @@ export default {
       } finally {
         this.isLoading = false;
       }
+    },
+
+    getValidImgUrl(url) {
+      const validUrl = url || DEFAULT_IMAGE_URL.movie;
+
+      return validUrl;
+    },
+
+    handleLoadImageError(e) {
+      e.target.src = DEFAULT_IMAGE_URL.movie;
     },
   },
 };

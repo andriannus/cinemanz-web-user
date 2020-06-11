@@ -2,31 +2,18 @@
   <div>
     <div class="columns is-multiline is-mobile">
       <div class="column is-12 has-text-centered">
-        <img src="https://via.placeholder.com/280x420?text=No+Picture" :alt="movie.title" />
+        <img :src="getValidImgUrl(movie.poster)" :alt="movie.title" @error="handleLoadImageError" />
       </div>
 
       <div class="column is-12">
         <div class="mb-3">
           <p class="has-text-weight-bold">Genre</p>
-
-          <span
-            v-for="(genre, index) in movie.genres"
-            :key="'g-' + index"
-            class="is-capitalized"
-          >
-            {{ genre + (index + 1 === movie.genres.length ? '' : ', ') }}
-          </span>
+          <flat-list :words="movie.genres"></flat-list>
         </div>
 
         <div class="mb-3">
           <p class="has-text-weight-bold">Producer</p>
-          <span
-            v-for="(producer, index) in movie.producers"
-            :key="'p-' + index"
-            class="is-capitalized"
-          >
-            {{ producer + (index + 1 === movie.producers.length ? '' : ', ') }}
-          </span>
+          <flat-list :words="movie.producers"></flat-list>
         </div>
 
         <div class="mb-3">
@@ -46,10 +33,7 @@
 
         <div class="mb-3">
           <p class="has-text-weight-bold">Casts</p>
-
-          <span v-for="(cast, index) in movie.casts" :key="'c-' + index" class="is-capitalized">
-            {{ cast + (index + 1 === movie.casts.length ? '' : ', ') }}
-          </span>
+          <flat-list :words="movie.casts"></flat-list>
         </div>
 
         <hr />
