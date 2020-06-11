@@ -24,13 +24,12 @@
       </div>
     </div>
 
-    <div v-else class="has-text-centered">
-      <h4 class="is-size-4">Data Not Found</h4>
-    </div>
+    <not-found v-else></not-found>
   </div>
 </template>
 
 <script>
+import NotFound from '@/shared/components/not-found.vue';
 import { DEFAULT_IMAGE_URL } from '@/shared/constants/data.constant';
 
 export default {
@@ -41,6 +40,10 @@ export default {
         return [];
       },
     },
+  },
+
+  components: {
+    'not-found': NotFound,
   },
 
   methods: {

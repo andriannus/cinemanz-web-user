@@ -14,14 +14,13 @@
       </div>
     </div>
 
-    <div v-else class="has-text-centered">
-      <h4 class="is-size-4">Data Not Found</h4>
-    </div>
+    <not-found v-else></not-found>
   </div>
 </template>
 
 <script>
 import MoviePoster from '@/shared/components/movie-poster.vue';
+import NotFound from '@/shared/components/not-found.vue';
 
 export default {
   props: {
@@ -35,6 +34,7 @@ export default {
 
   components: {
     'movie-poster': MoviePoster,
+    'not-found': NotFound,
   },
 };
 </script>
