@@ -4,17 +4,18 @@ query Movie($id: ID!) {
     message
     result {
       _id
-      cast
+      casts
       director
       end
-      genre
+      genres
       minutes
       poster
-      producer
+      producers
       production
       rate
       start
       synopsis
+      theaters
       title
       writer
     }

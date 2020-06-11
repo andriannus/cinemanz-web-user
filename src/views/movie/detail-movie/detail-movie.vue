@@ -10,22 +10,22 @@
           <p class="has-text-weight-bold">Genre</p>
 
           <span
-            v-for="(genre, index) in movie.genre"
+            v-for="(genre, index) in movie.genres"
             :key="'g-' + index"
             class="is-capitalized"
           >
-            {{ genre + (index + 1 === movie.genre.length ? '' : ', ') }}
+            {{ genre + (index + 1 === movie.genres.length ? '' : ', ') }}
           </span>
         </div>
 
         <div class="mb-3">
           <p class="has-text-weight-bold">Producer</p>
           <span
-            v-for="(producer, index) in movie.producer"
+            v-for="(producer, index) in movie.producers"
             :key="'p-' + index"
             class="is-capitalized"
           >
-            {{ producer + (index + 1 === movie.producer.length ? '' : ', ') }}
+            {{ producer + (index + 1 === movie.producers.length ? '' : ', ') }}
           </span>
         </div>
 
@@ -47,8 +47,8 @@
         <div class="mb-3">
           <p class="has-text-weight-bold">Casts</p>
 
-          <span v-for="(cast, index) in movie.cast" :key="'c-' + index" class="is-capitalized">
-            {{ cast + (index + 1 === movie.cast.length ? '' : ', ') }}
+          <span v-for="(cast, index) in movie.casts" :key="'c-' + index" class="is-capitalized">
+            {{ cast + (index + 1 === movie.casts.length ? '' : ', ') }}
           </span>
         </div>
 
