@@ -15,7 +15,10 @@ export default {
   data() {
     return {
       errorMessage: '',
-      isLoading: false,
+      loading: {
+        isFetch: false,
+        isFetchMore: false,
+      },
       theater: {},
     };
   },
@@ -32,8 +35,9 @@ export default {
     async fetchTheaters(page) {
       const validPage = page || 1;
       const skip = (validPage - 1) * PER_PAGE;
+      const selectedLoadingStatus = page ? 'isFetchMore' : 'isFetch';
 
-      this.isLoading = true;
+      this.loading[selectedLoadingStatus] = true;
 
       try {
         const { data } = await this.$apollo.query({
@@ -43,11 +47,19 @@ export default {
             limit: PER_PAGE,
           },
         });
-
         const { results, total } = data.theaters;
 
         const options = { page: validPage, limit: PER_PAGE, total };
-        const theater = paginate(results, options);
+        let theater = paginate(results, options);
+
+        if (page) {
+          const updatedData = [...this.theater.data, ...theater.data];
+
+          theater = {
+            ...theater,
+            data: updatedData,
+          };
+        }
 
         this.errorMessage = '';
         this.theater = theater;
@@ -55,7 +67,7 @@ export default {
         this.errorMessage = networkError;
         this.theater = {};
       } finally {
-        this.isLoading = false;
+        this.loading[selectedLoadingStatus] = false;
       }
     },
   },

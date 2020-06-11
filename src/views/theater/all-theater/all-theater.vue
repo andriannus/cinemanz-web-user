@@ -4,7 +4,10 @@
 
     <nav v-if="theater.nextPage" class="level">
       <div class="level-item">
-        <button class="button is-dark is-outlined">Load More</button>
+        <button
+          class="button is-dark is-outlined"
+          @click="fetchTheaters(theater.nextPage)"
+        >Load More</button>
       </div>
     </nav>
   </div>
