@@ -6,7 +6,7 @@
         :key="'m-' + index"
         class="column is-one-third is-one-third-mobile has-text-centered"
       >
-        <img src="https://via.placeholder.com/280x420?text=No+Picture" :alt="movie.title" />
+        <movie-poster :src="movie.poster" :alt="movie.title"></movie-poster>
 
         <router-link :to="'/movie/' + movie._id" class="is-size-6">
           {{ movie.title }}
@@ -21,6 +21,8 @@
 </template>
 
 <script>
+import MoviePoster from '@/shared/components/movie-poster.vue';
+
 export default {
   props: {
     movies: {
@@ -29,6 +31,10 @@ export default {
         return [];
       },
     },
+  },
+
+  components: {
+    'movie-poster': MoviePoster,
   },
 };
 </script>

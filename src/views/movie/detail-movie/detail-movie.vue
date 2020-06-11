@@ -2,7 +2,7 @@
   <div>
     <div class="columns is-multiline is-mobile">
       <div class="column is-12 has-text-centered">
-        <img :src="getValidImgUrl(movie.poster)" :alt="movie.title" @error="handleLoadImageError" />
+        <movie-poster :src="movie.poster" :alt="movie.title"></movie-poster>
       </div>
 
       <div class="column is-12">
