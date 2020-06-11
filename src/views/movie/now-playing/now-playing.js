@@ -1,3 +1,4 @@
+import LoadMoreButton from '@/shared/components/load-more-button.vue';
 import PaginatedMovies from '@/shared/components/paginated-movies.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import SHOWING_MOVIE from '@/shared/constants/movie.constant';
@@ -10,6 +11,7 @@ export default {
   },
 
   components: {
+    'load-more-button': LoadMoreButton,
     'paginated-movies': PaginatedMovies,
   },
 

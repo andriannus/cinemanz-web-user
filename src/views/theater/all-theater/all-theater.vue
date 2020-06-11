@@ -2,14 +2,10 @@
   <div>
     <paginated-theaters :theaters="theater.data"></paginated-theaters>
 
-    <nav v-if="theater.nextPage" class="level">
-      <div class="level-item">
-        <button
-          class="button is-dark is-outlined"
-          @click="fetchTheaters(theater.nextPage)"
-        >Load More</button>
-      </div>
-    </nav>
+    <load-more-button
+      v-if="theater.nextPage"
+      @buttonClicked="fetchTheaters(theater.nextPage)"
+    ></load-more-button>
   </div>
 </template>
 

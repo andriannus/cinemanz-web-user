@@ -1,3 +1,4 @@
+import LoadMoreButton from '@/shared/components/load-more-button.vue';
 import PaginatedTheaters from '@/shared/components/paginated-theaters.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import THEATERS from '@/shared/graphql/Theaters.gql';
@@ -9,6 +10,7 @@ export default {
   },
 
   components: {
+    'load-more-button': LoadMoreButton,
     'paginated-theaters': PaginatedTheaters,
   },
 
