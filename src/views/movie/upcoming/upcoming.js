@@ -2,6 +2,7 @@ import PaginatedMovies from '@/shared/components/paginated-movies.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import SHOWING_MOVIE from '@/shared/constants/movie.constant';
 import MOVIES from '@/shared/graphql/Movies.gql';
+import paginate from '@/shared/utils/transform.util';
 
 export default {
   metaInfo: {
@@ -15,8 +16,11 @@ export default {
   data() {
     return {
       errorMessage: '',
-      isLoading: false,
-      movies: [],
+      loading: {
+        isFetch: false,
+        isFetchMore: false,
+      },
+      movie: {},
     };
   },
 
@@ -30,31 +34,44 @@ export default {
 
   methods: {
     async fetchUpcomingMovies(page) {
+      const { upcoming } = SHOWING_MOVIE;
+      const validPage = page || 1;
+      const skip = (validPage - 1) * PER_PAGE;
+      const selectedLoadingStatus = page ? 'isFetchMore' : 'isFetch';
+
       this.isLoading = true;
 
       try {
-        const { data } = await this.fetchMovies(page, SHOWING_MOVIE.upcoming);
+        const { data } = await this.$apollo.query({
+          query: MOVIES,
+          variables: {
+            skip,
+            limit: PER_PAGE,
+            showing: upcoming,
+          },
+        });
+        const { results, total } = data.movies;
 
-        this.movies = data.movies.results;
-      } catch (error) {
-        console.log(error);
+        const options = { page: validPage, limit: PER_PAGE, total };
+        let movie = paginate(results, options);
+
+        if (page) {
+          const updatedData = [...this.movie.data, ...movie.data];
+
+          movie = {
+            ...movie,
+            data: updatedData,
+          };
+        }
+
+        this.errorMessage = '';
+        this.movie = movie;
+      } catch ({ networkError }) {
+        this.errorMessage = networkError;
+        this.movie = {};
       } finally {
-        this.isLoading = false;
+        this.loading[selectedLoadingStatus] = false;
       }
-    },
-
-    fetchMovies(page, showing) {
-      const validPage = page || 1;
-      const skip = (validPage - 1) * PER_PAGE;
-
-      return this.$apollo.query({
-        query: MOVIES,
-        variables: {
-          skip,
-          limit: PER_PAGE,
-          showing,
-        },
-      });
     },
   },
 };

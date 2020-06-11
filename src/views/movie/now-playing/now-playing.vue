@@ -1,10 +1,13 @@
 <template>
   <div>
-    <paginated-movies :movies="movies"></paginated-movies>
+    <paginated-movies :movies="movie.data"></paginated-movies>
 
-    <nav class="level">
+    <nav v-if="movie.nextPage" class="level">
       <div class="level-item">
-        <button class="button is-dark is-outlined">Load More</button>
+        <button
+          class="button is-dark is-outlined"
+          @click="fetchNowPlayingMovies(movie.nextPage)"
+        >Load More</button>
       </div>
     </nav>
   </div>
