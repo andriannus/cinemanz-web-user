@@ -1,39 +1,33 @@
-import Movie from '@/views/movie/movie.vue';
-import AllMovie from '@/views/movie/all-movie/all-movie.vue';
-import DetailMovie from '@/views/movie/detail-movie/detail-movie.vue';
-import NowPlaying from '@/views/movie/now-playing/now-playing.vue';
-import Upcoming from '@/views/movie/upcoming/upcoming.vue';
-
 const movieRoutes = [
   {
     path: '/movie',
     name: 'Movie',
-    component: Movie,
+    component: () => import(/* webpackChunkName: "movie" */ '@/views/movie/movie.vue'),
     children: [
       {
         path: '/',
-        component: AllMovie,
+        component: () => import(/* webpackChunkName: "all-movie" */ '@/views/movie/all-movie/all-movie.vue'),
         meta: {
           title: 'All Movie',
         },
       },
       {
         path: 'now-playing',
-        component: NowPlaying,
+        component: () => import(/* webpackChunkName: "now-playing" */ '@/views/movie/now-playing/now-playing.vue'),
         meta: {
           title: 'Now Playing Movies',
         },
       },
       {
         path: 'upcoming',
-        component: Upcoming,
+        component: () => import(/* webpackChunkName: "upcoming" */ '@/views/movie/upcoming/upcoming.vue'),
         meta: {
           title: 'Upcoming Movies',
         },
       },
       {
         path: ':id',
-        component: DetailMovie,
+        component: () => import(/* webpackChunkName: "detail-movie" */ '@/views/movie/detail-movie/detail-movie.vue'),
       },
     ],
   },

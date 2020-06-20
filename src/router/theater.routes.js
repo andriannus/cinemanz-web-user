@@ -1,23 +1,23 @@
-import Theater from '@/views/theater/theater.vue';
-import AllTheater from '@/views/theater/all-theater/all-theater.vue';
-import DetailTheater from '@/views/theater/detail-theater/detail-theater.vue';
-
 const theaterRoutes = [
   {
     path: '/theater',
     name: 'Theater',
-    component: Theater,
+    component: () => import(/* webpackChunkName: "theater" */ '@/views/theater/theater.vue'),
     children: [
       {
         path: '/',
-        component: AllTheater,
+        component: () => import(
+          /* webpackChunkName: "all-theater" */ '@/views/theater/all-theater/all-theater.vue'
+        ),
         meta: {
           title: 'All Theater',
         },
       },
       {
         path: ':id',
-        component: DetailTheater,
+        component: () => import(
+          /* webpackChunkName: "detail-theater" */ '@/views/theater/detail-theater/detail-theater.vue'
+        ),
       },
     ],
   },
