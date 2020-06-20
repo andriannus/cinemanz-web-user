@@ -12,7 +12,7 @@
       <paginated-movies :movies="movie.results"></paginated-movies>
 
       <div class="has-text-centered">
-        <router-link class="button is-dark is-outlined" to="/movie">See More</router-link>
+        <router-link class="button is-dark is-outlined" to="/movie">See More Movies</router-link>
       </div>
 
       <hr />
@@ -26,7 +26,10 @@
       <paginated-theaters :theaters="theater.results"></paginated-theaters>
 
       <div class="has-text-centered">
-        <router-link class="button is-dark is-outlined" to="/theater">See More</router-link>
+        <router-link
+          class="button is-dark is-outlined"
+          to="/theater"
+        >See More Theaters</router-link>
       </div>
     </div>
   </div>
