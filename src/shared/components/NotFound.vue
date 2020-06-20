@@ -1,7 +1,7 @@
 <template>
-  <div class="has-text-centered">
+  <div class="has-text-centered py-2">
     <font-awesome-icon :icon="icon" class="mb-3" size="6x"></font-awesome-icon>
-    <h4 class="is-size-4">Data Not Found</h4>
+    <h4 class="is-size-4">{{ text }}</h4>
   </div>
 </template>
 
@@ -10,14 +10,22 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 
 export default {
-  components: {
-    'font-awesome-icon': FontAwesomeIcon,
+  props: {
+    icon: {
+      type: Object,
+      default() {
+        return faSearch;
+      },
+    },
+
+    text: {
+      type: String,
+      default: 'Data Not Found',
+    },
   },
 
-  data() {
-    return {
-      icon: faSearch,
-    };
+  components: {
+    'font-awesome-icon': FontAwesomeIcon,
   },
 };
 </script>
