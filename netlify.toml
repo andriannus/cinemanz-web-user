@@ -5,7 +5,9 @@
 
 [[headers]]
   for ="/*"
+
   [headers.values]
+    cache-control = '''
     public
     must-revalidate
-    max-age = 2592000
+    max-age = 2592000'''
