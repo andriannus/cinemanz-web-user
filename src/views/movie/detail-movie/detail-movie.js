@@ -1,5 +1,5 @@
-import FlatList from '@/shared/components/flat-list.vue';
-import MoviePoster from '@/shared/components/movie-poster.vue';
+import FlatList from '@/shared/components/FlatList.vue';
+import MoviePoster from '@/shared/components/MoviePoster.vue';
 import MOVIE from '@/shared/graphql/Movie.gql';
 
 export default {
@@ -10,8 +10,8 @@ export default {
   },
 
   components: {
-    'flat-list': FlatList,
-    'movie-poster': MoviePoster,
+    FlatList,
+    MoviePoster,
   },
 
   data() {

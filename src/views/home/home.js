@@ -1,15 +1,15 @@
-import AppBanner from '@/shared/components/app-banner.vue';
-import PaginatedMovies from '@/shared/components/paginated-movies.vue';
-import PaginatedTheaters from '@/shared/components/paginated-theaters.vue';
+import AppBanner from '@/shared/components/AppBanner.vue';
+import PaginatedMovies from '@/shared/components/PaginatedMovies.vue';
+import PaginatedTheaters from '@/shared/components/PaginatedTheaters.vue';
 import PER_PAGE from '@/shared/constants/data.constant';
 import MOVIES from '@/shared/graphql/Movies.gql';
 import THEATERS from '@/shared/graphql/Theaters.gql';
 
 export default {
   components: {
-    'app-banner': AppBanner,
-    'paginated-movies': PaginatedMovies,
-    'paginated-theaters': PaginatedTheaters,
+    AppBanner,
+    PaginatedMovies,
+    PaginatedTheaters,
   },
 
   data() {

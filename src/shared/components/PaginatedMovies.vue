@@ -19,8 +19,8 @@
 </template>
 
 <script>
-import MoviePoster from '@/shared/components/movie-poster.vue';
-import NotFound from '@/shared/components/not-found.vue';
+import MoviePoster from '@/shared/components/MoviePoster.vue';
+import NotFound from '@/shared/components/NotFound.vue';
 
 export default {
   props: {
@@ -33,8 +33,8 @@ export default {
   },
 
   components: {
-    'movie-poster': MoviePoster,
-    'not-found': NotFound,
+    MoviePoster,
+    NotFound,
   },
 };
 </script>

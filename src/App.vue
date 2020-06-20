@@ -9,11 +9,11 @@
 </template>
 
 <script>
-import AppNavbar from '@/shared/components/app-navbar.vue';
+import AppNavbar from '@/shared/components/AppNavbar.vue';
 
 export default {
   components: {
-    'app-navbar': AppNavbar,
+    AppNavbar,
   },
 
   metaInfo: {

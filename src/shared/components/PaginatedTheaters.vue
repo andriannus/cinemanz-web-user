@@ -29,7 +29,7 @@
 </template>
 
 <script>
-import NotFound from '@/shared/components/not-found.vue';
+import NotFound from '@/shared/components/NotFound.vue';
 import { DEFAULT_IMAGE_URL } from '@/shared/constants/data.constant';
 
 export default {
@@ -43,7 +43,7 @@ export default {
   },
 
   components: {
-    'not-found': NotFound,
+    NotFound,
   },
 
   methods: {
