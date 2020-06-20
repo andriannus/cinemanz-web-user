@@ -25,7 +25,7 @@ export default {
   },
 
   components: {
-    'font-awesome-icon': FontAwesomeIcon,
+    FontAwesomeIcon,
   },
 };
 </script>

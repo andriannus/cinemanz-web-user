@@ -1,6 +1,6 @@
 import { faFan } from '@fortawesome/free-solid-svg-icons';
 
-import NotFound from '@/shared/components/NotFound.vue';
+import AppNotice from '@/shared/components/AppNotice.vue';
 
 export default {
   metaInfo: {
@@ -8,7 +8,7 @@ export default {
   },
 
   components: {
-    NotFound,
+    AppNotice,
   },
 
   data() {

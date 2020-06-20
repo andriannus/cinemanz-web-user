@@ -24,12 +24,12 @@
       </div>
     </div>
 
-    <not-found v-else></not-found>
+    <app-notice v-else></app-notice>
   </div>
 </template>
 
 <script>
-import NotFound from '@/shared/components/NotFound.vue';
+import AppNotice from '@/shared/components/AppNotice.vue';
 import { DEFAULT_IMAGE_URL } from '@/shared/constants/data.constant';
 
 export default {
@@ -43,7 +43,7 @@ export default {
   },
 
   components: {
-    NotFound,
+    AppNotice,
   },
 
   methods: {

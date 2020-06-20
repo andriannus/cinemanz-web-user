@@ -14,13 +14,13 @@
       </div>
     </div>
 
-    <not-found v-else></not-found>
+    <app-notice v-else></app-notice>
   </div>
 </template>
 
 <script>
 import MoviePoster from '@/shared/components/MoviePoster.vue';
-import NotFound from '@/shared/components/NotFound.vue';
+import AppNotice from '@/shared/components/AppNotice.vue';
 
 export default {
   props: {
@@ -34,7 +34,7 @@ export default {
 
   components: {
     MoviePoster,
-    NotFound,
+    AppNotice,
   },
 };
 </script>
